@@ -40,24 +40,50 @@ MATT'S NOTES FOR CREATING THE 3D FILE AND PUBLISHING
     />
     <title>3D Custom Render</title>
     <script src="https://dist.pixotronics.com/webgi/runtime/viewer-0.8.0.js"></script>
+    <script>import TweakpaneUiPlugin</script>
   </head>
 
   <body>
     <!-- REPLACE THE SRC WITH THE LINK TO YOUR GLB FILE -->
+    <div>
+      
+  
     <webgi-viewer
       id="viewer-3d"
       src="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Brett_webgi.glb?v=1691604787793"
       style="
-        width: 100%;
+        width: 50%;
         height: 100vh;
         z-index: 1;
         display: block;
         margin: 0;
         padding: 0;
+        float: right;
       "
     />
     <style>
       margin: 0;
     </style>
+        </div>
+    <div>
+      
+  
+    <webgi-viewer
+      id="viewer-3d2"
+      src="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Brett_webgi.glb?v=1691604787793"
+      style="
+        width: 50%;
+        height: 100vh;
+        z-index: 1;
+        display: block;
+        margin: 0;
+        padding: 0;
+        float: left;
+      "
+    />
+    <style>
+      margin: 0;
+    </style>
+        </div>
   </body>
 </html>
