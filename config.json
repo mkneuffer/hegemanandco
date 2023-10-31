@@ -1,0 +1,28 @@
+{
+  "objects": [
+    {
+      "items": ["mDenning_Sapphires_.glb", "mDenning_Pearls.glb"],
+      "icons": ["", ""],
+      "titles": ["", ""],
+      "prefix": "Stones/",
+      "name": "Stones",
+      "icon": "",
+      "title": "",
+      "selected": 1,
+      "data": {}
+    },
+    {
+      "items": ["mDenningYG_.glb"],
+      "icons": [""],
+      "titles": [""],
+      "prefix": "YG/",
+      "name": "YG",
+      "icon": "",
+      "title": "",
+      "selected": 0,
+      "data": {}
+    }
+  ],
+  "materials": [],
+  "type": "VariationConfiguratorPlugin"
+}
