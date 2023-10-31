@@ -30,4 +30,3 @@ await config.importPath("https://glitch.com/config.json");
   "type": "VariationConfiguratorPlugin"
 }
 
-
