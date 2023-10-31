@@ -18,54 +18,9 @@ MATT'S NOTES FOR CREATING THE 3D FILE AND PUBLISHING
 4. NEW 3D RENDER SHOULD BE VIEWABLE AT https://hegemanandco.glitch.me/NAME_OF_HTML_FILE.html
 
 -->
-[code]<script>
-  var json = '{
-    "objects": [
-        {
-            "items": [
-                "Ring_Thick.glb",
-                "Ring_Thin.glb"
-            ],
-            "icons": [
-                "",
-                ""
-            ],
-            "titles": [
-                "",
-                ""
-            ],
-            "prefix": "Ring Shape/",
-            "name": "Ring Shape",
-            "icon": "",
-            "title": "",
-            "selected": 1,
-            "data": {}
-        },
-        {
-            "items": [
-                "Gem_Diamond.glb",
-                "Gem_Sphere.glb"
-            ],
-            "icons": [
-                "",
-                ""
-            ],
-            "titles": [
-                "",
-                ""
-            ],
-            "prefix": "Gem/",
-            "name": "Gem",
-            "icon": "",
-            "title": "",
-            "selected": 0,
-            "data": {}
-        }
-    ],
-    "materials": [],
-    "type": "VariationConfiguratorPlugin"
-}'
-<!DOCTYPE html>
+
+<json>const config = await viewer.addPlugin(VariationConfiguratorPlugin);
+await config.importPath("https://glitch.com/config.json");</json>
 <html>
   <style>
     body {
@@ -86,7 +41,6 @@ MATT'S NOTES FOR CREATING THE 3D FILE AND PUBLISHING
     />
     <title>3D Custom Render</title>
     <script src="https://dist.pixotronics.com/webgi/runtime/viewer-0.8.0.js"></script>
-
   </head>
 
   <body>
@@ -101,7 +55,6 @@ MATT'S NOTES FOR CREATING THE 3D FILE AND PUBLISHING
         display: block;
         margin: 0;
         padding: 0;
-             
       "
     />
     <style>
