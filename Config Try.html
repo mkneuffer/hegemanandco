@@ -19,8 +19,6 @@ MATT'S NOTES FOR CREATING THE 3D FILE AND PUBLISHING
 
 -->
 
-<json>const config = await viewer.addPlugin(VariationConfiguratorPlugin);
-await config.importPath("https://glitch.com/config.json");</json>
 <html>
   <style>
     body {
@@ -55,8 +53,13 @@ await config.importPath("https://glitch.com/config.json");</json>
         display: block;
         margin: 0;
         padding: 0;
-      "
+      "           
     />
+    <json> const config = await viewer.addPlugin(VariationConfiguratorPlugin);
+await config.importPath("https://glitch.com/config.json");
+    
+    
+    </json>
     <style>
       margin: 0;
     </style>

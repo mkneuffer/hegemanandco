@@ -1,46 +1,33 @@
+const config = await viewer.addPlugin(VariationConfiguratorPlugin);
+await config.importPath("https://glitch.com/config.json");
+
 {
-    "objects": [
-        {
-            "items": [
-                "Ring_Thick.glb",
-                "Ring_Thin.glb"
-            ],
-            "icons": [
-                "",
-                ""
-            ],
-            "titles": [
-                "",
-                ""
-            ],
-            "prefix": "Ring Shape/",
-            "name": "Ring Shape",
-            "icon": "",
-            "title": "",
-            "selected": 1,
-            "data": {}
-        },
-        {
-            "items": [
-                "Gem_Diamond.glb",
-                "Gem_Sphere.glb"
-            ],
-            "icons": [
-                "",
-                ""
-            ],
-            "titles": [
-                "",
-                ""
-            ],
-            "prefix": "Gem/",
-            "name": "Gem",
-            "icon": "",
-            "title": "",
-            "selected": 0,
-            "data": {}
-        }
-    ],
-    "materials": [],
-    "type": "VariationConfiguratorPlugin"
+  "objects": [
+    {
+      "items": ["Ring_Thick.glb", "Ring_Thin.glb"],
+      "icons": ["", ""],
+      "titles": ["", ""],
+      "prefix": "Ring Shape/",
+      "name": "Ring Shape",
+      "icon": "",
+      "title": "",
+      "selected": 1,
+      "data": {}
+    },
+    {
+      "items": ["Gem_Diamond.glb", "Gem_Sphere.glb"],
+      "icons": ["", ""],
+      "titles": ["", ""],
+      "prefix": "Gem/",
+      "name": "Gem",
+      "icon": "",
+      "title": "",
+      "selected": 0,
+      "data": {}
+    }
+  ],
+  "materials": [],
+  "type": "VariationConfiguratorPlugin"
 }
+
+
