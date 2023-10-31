@@ -1,4 +1,3 @@
-
 const config = await viewer.addPlugin(VariationConfiguratorPlugin);
 await config.importPath("https://glitch.com/config.json");
 
