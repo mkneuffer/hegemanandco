@@ -2,7 +2,13 @@
 
 
 <html>
-  
+  <json>
+const config = await viewer.addPlugin(VariationConfiguratorPlugin);
+await config.importPath("https://configtry2.s3.us-east-2.amazonaws.com/objects/config.json");
+
+const category = config.variations.objects[0]
+config.applyVariation(category , 0 , 'objects' );
+</json>
   <style>
     body {
       overflow: hidden;
@@ -53,7 +59,7 @@
     <webgi-viewer
                   
       id="viewer-3d"
-      src="https://configtry2.s3.us-east-2.amazonaws.com/Try+2/config.json"
+      src="https://configtry2.s3.us-east-2.amazonaws.com/objects/config.json"
       style="
         width: 50%;
         height: 50vh;
@@ -68,9 +74,4 @@
     </style>
   </body>
 </html>
- 
-<json>
 
-
-
-</json>
