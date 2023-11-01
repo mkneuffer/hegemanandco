@@ -1,5 +1,6 @@
+
 const config = await viewer.addPlugin(VariationConfiguratorPlugin);
-await config.importPath("https://glitch.com/config.json");
+await config.importPath("https://configtry2.s3.us-east-2.amazonaws.com/Try+2/config.json");
 
 {
   "objects": [
