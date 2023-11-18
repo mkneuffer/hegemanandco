@@ -1,6 +1,0 @@
-
-const config = await viewer.addPlugin(VariationConfiguratorPlugin);
-await config.importPath("https://configtry2.s3.us-east-2.amazonaws.com/objects/config.json");
-
-const category = config.variations.objects[0]
-config.applyVariation(category , 0 , 'objects' );
