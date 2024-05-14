@@ -96,6 +96,7 @@
     const customerName = document.getElementById("customerName").value;
     const numLinks = document.getElementById("numLinks").value;
     const linkInputsContainer = document.getElementById("linkInputs");
+    const generateLinksBtn = document.getElementById("generateLinksBtn"); // Corrected ID
     const generateWebpageBtn = document.getElementById("generateWebpageBtn"); // Corrected ID
 
     // Clear previous link inputs
@@ -118,11 +119,12 @@
         linkInputsContainer.appendChild(linkInput);
     }
 
+    // Hide the "Generate Links" button
+    generateLinksBtn.style.display = "none";
+
     // Show the "Generate Webpages" button
     generateWebpageBtn.style.display = "block"; // Corrected variable name
 }
-
-
 
        function generateWebpages() {
          const customerNameOriginal = document.getElementById('customerName').value.trim(); // Saving the original customer name
