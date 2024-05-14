@@ -1,1 +1,73 @@
-<!DOCTYPE html><html><head><title>Generated Webpage</title><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"><style>body{font-family:'Libre Baskerville',serif;display:flex;justify-content:center;margin:0;padding-top:50px;background-color:#f5f5f5;}.container{text-align:center;background-color:#ffffff;padding:30px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);}.button-container{display:flex;justify-content:center;margin-bottom:20px;}.button-container button{margin:0 10px;padding:10px 20px;background-color:#333333;color:#ffffff;border:none;border-radius:5px;font-size:16px;cursor:pointer;transition:background-color 0.3s ease;}.button-container button:hover{background-color:#555555;}.generated-link{display:inline-block;padding:8px 16px;background-color:#f0f0f0;border:1px solid #ccc;border-radius:5px;margin:5px;cursor:pointer;transition:background-color 0.3s ease;text-decoration:none;color:#333333;}.generated-link:hover{background-color:#e0e0e0;}</style></head><body><a class="generated-link" href="https://www.youtube.com/" target="_blank">https://www.youtube.com/</a><a class="generated-link" href="https://www.netflix.com/" target="_blank">https://www.netflix.com/</a></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matthew Neuffer's Renders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: "Libre Baskerville", serif;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding-top: 50px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #000000;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333333;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #555555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your 3 Renders</h1>
+        <h2>Each button will take you to the respective ring option</h2>
+        <div class="button-container">
+            ${links.map((link, index) => `<button onclick="openLinkInNewTab('${link}')">Render ${index + 1}</button>`).join('')}
+        </div>
+    </div>
+    <script>
+        function openLinkInNewTab(link) {
+            window.open(link, "_blank");
+        }
+    </script>
+</body>
+</html>
