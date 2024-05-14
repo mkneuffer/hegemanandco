@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <!-- Link to the icon -->
+    <link rel="icon" type="image/png" href="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Hegeman_favicon.png?v=1691072796456">
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding-top: 50px;
+            background-color: #f5f5f5;
+        }
+    .container {
+        text-align: center;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333333;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"] {
+        padding: 10px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-container button:hover {
+        background-color: #555555;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Webpage Generator</h1>
+        <form>
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" placeholder="Enter Customer Name">
+            </div>
+            <div class="form-group">
+                <label for="numLinks">Number of Links:</label>
+                <input type="number" id="numLinks" placeholder="Enter Number of Links" min="1">
+            </div>
+            <div id="linkInputs"></div>
+            <div class="button-container">
+                <button type="button" id="generateLinksBtn" onclick="generateLinks()">Generate Links</button>
+                <button type="button" id="generateWebpageBtn" onclick="generateWebpages()" style="display: none;">Generate Webpage</button>
+            </div>
+            <div id="generatedLinks"></div>
+        </form>
+    </div>
+
+    <script>
+        function generateLinks() {
+    const customerName = document.getElementById("customerName").value;
+    const numLinks = document.getElementById("numLinks").value;
+    const linkInputsContainer = document.getElementById("linkInputs");
+    const generateWebpageBtn = document.getElementById("generateWebpageBtn"); // Corrected ID
+
+    // Clear previous link inputs
+    linkInputsContainer.innerHTML = "";
+
+    // Generate link input fields based on the number of links
+    for (let i = 0; i < numLinks; i++) {
+        const linkInput = document.createElement("div");
+        linkInput.className = "form-group";
+
+        const linkLabel = document.createElement("label");
+        linkLabel.textContent = `Link ${i + 1}:`;
+
+        const linkInputField = document.createElement("input");
+        linkInputField.type = "text";
+        linkInputField.placeholder = "Enter Link";
+
+        linkInput.appendChild(linkLabel);
+        linkInput.appendChild(linkInputField);
+        linkInputsContainer.appendChild(linkInput);
+    }
+
+    // Show the "Generate Webpages" button
+    generateWebpageBtn.style.display = "block"; // Corrected variable name
+}
+
+
+
+       function generateWebpages() {
+         const customerNameOriginal = document.getElementById('customerName').value.trim(); // Saving the original customer name
+    const customerName = document.getElementById('customerName').value.trim().toLowerCase().replace(/\s+/g, '');
+    const links = Array.from(document.getElementById('linkInputs').querySelectorAll('input[type="text"]')).map(input => input.value);
+    let htmlContent = `<!DOCTYPE html><html><head><title>${customerNameOriginal}'s Renders</title><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"><style>body{font-family:'Libre Baskerville',serif;display:flex;justify-content:center;margin:0;padding-top:50px;background-color:#f5f5f5;text-align:center;}.container{max-width:500px;margin:0 auto;background-color:#ffffff;padding:30px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);}.button-container{display:flex;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}.button-container button{margin:5px;padding:10px 20px;background-color:#333333;color:#ffffff;border:none;border-radius:5px;font-size:16px;cursor:pointer;transition:background-color 0.3s ease;}.button-container button:hover{background-color:#555555;}a.generated-link{display:inline-block;padding:8px 16px;background-color:#333333;border:1px solid #333333;border-radius:5px;margin:5px;cursor:pointer;transition:background-color 0.3s ease;text-decoration:none;color:#ffffff;}h1{color:#000000;font-size:30px;margin-bottom:20px;}h2{color:#333333;font-size:15px;margin-bottom:20px;}@media screen and (max-width: 767px){.button-container button{margin:5px;width:calc(100% - 10px);}}</style></head><body><div class="container"><h1>${customerNameOriginal}'s Renders</h1><h2>Each button will take you to the respective ring option</h2><div class="button-container">`;
+    links.forEach(link => {
+        htmlContent += `<a class="generated-link" href="${link}" target="_blank">${link}</a>`;
+    });
+    htmlContent += '</body></html>';
+
+    // Create a Blob containing the HTML content
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+
+    // Create a temporary URL for the Blob
+    const url = URL.createObjectURL(blob);
+
+    // Create a link element to trigger the download
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = `${customerName}.html`; // Set the filename
+    downloadLink.click();
+
+    // Clean up
+    URL.revokeObjectURL(url);
+}
+
+    </script>
+</body>
+</html>
