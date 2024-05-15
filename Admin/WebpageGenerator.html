@@ -145,7 +145,7 @@
                 // Create a link element to trigger the download for each link
                 const linkDownloadLink = document.createElement('a');
                 linkDownloadLink.href = linkUrlObject;
-                linkDownloadLink.download = `${customerName}${linkNameLowercase}.html`; // Set the filename
+                linkDownloadLink.download = `${customerName}-${linkNameLowercase}.html`; // Set the filename
                 linkDownloadLink.click();
 
                 // Clean up for each link
