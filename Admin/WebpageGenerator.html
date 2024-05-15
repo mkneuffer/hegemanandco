@@ -170,15 +170,24 @@ function generateWebpages() {
     mainDownloadLink.download = `${customerName}.html`; // Set the filename for the main webpage
     mainDownloadLink.click();
 
-    // Clean up for the main webpage
-    URL.revokeObjectURL(mainUrl);
+     // Show the shareable link container
+     const shareableLinkContainer = document.getElementById('shareableLinkContainer');
+    shareableLinkContainer.style.display = 'block';
 
-    // Show the shareable link container (if needed)
-    const shareableLinkContainer = document.getElementById('shareableLinkContainer');
-    shareableLinkContainer.style.display = 'none'; // or 'block', depending on whether you want to keep this feature
+    // Update the shareable link text
+    const shareableLinkText = document.getElementById('shareableLinkText');
+    shareableLinkText.value = `https://hegemanandco.glitch.me/${customerName}.html`;
+
+    // Clean up
+    URL.revokeObjectURL(url);
 }
 
-
+function copyToClipboard() {
+    const shareableLinkText = document.getElementById('shareableLinkText');
+    shareableLinkText.select();
+    document.execCommand('copy');
+    alert('Link copied to clipboard!');
+}
     </script>
 </body>
 </html>
