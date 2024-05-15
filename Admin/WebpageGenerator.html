@@ -75,12 +75,10 @@
             <div class="button-container">
                 <button type="button" id="generateLinksBtn" onclick="generateLinks()">Generate Links</button>
                 <button type="button" id="generateWebpageBtn" onclick="generateWebpages()" style="display: none;">Generate Webpage</button>
+                <!-- New elements for email button -->
+                <button type="button" id="sendEmailBtn" class="button" style="display: none;" onclick="sendEmail()">Send Email</button>
             </div>
             <div id="generatedLinks"></div>
-            <!-- New elements for shareable link -->
-            <!-- Replace the shareable link section with a button -->
-<button type="button" id="sendEmailBtn" onclick="sendEmail()">Send Email</button>
-
         </form>
     </div>
 
@@ -117,86 +115,82 @@
 
             // Show the "Generate Webpages" button
             generateWebpageBtn.style.display = "block";
-}
+        }
 
-function generateWebpages() {
-    const customerNameOriginal = document.getElementById('customerName').value.trim(); // Saving the original customer name
-    const customerName = document.getElementById('customerName').value.trim().toLowerCase().replace(/\s+/g, '');
-    const linkInputs = document.getElementById('linkInputs').querySelectorAll('.form-group');
+        function generateWebpages() {
+            const customerNameOriginal = document.getElementById('customerName').value.trim(); // Saving the original customer name
+            const customerName = document.getElementById('customerName').value.trim().toLowerCase().replace(/\s+/g, '');
+            const linkInputs = document.getElementById('linkInputs').querySelectorAll('.form-group');
 
-    // Generate HTML content for the main webpage
-    let mainHtmlContent = `<!DOCTYPE html><html><head><title>${customerNameOriginal}'s Renders</title><link rel="icon" type="image/png" href="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Hegeman_favicon.png?v=1691072796456"><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"><style>body{font-family:'Libre Baskerville',serif;display:flex;justify-content:center;margin:0;padding-top:50px;background-color:#f5f5f5;text-align:center;}.container{max-width:500px;margin:0 auto;background-color:#ffffff;padding:30px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);}.button-container{display:flex;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}.button-container button{margin:5px;padding:10px 20px;background-color:#333333;color:#ffffff;border:none;border-radius:5px;font-size:16px;cursor:pointer;transition:background-color 0.3s ease;}.button-container button:hover{background-color:#555555;}a.generated-link{display:inline-block;padding:8px 16px;background-color:#333333;border:1px solid #333333;border-radius:5px;margin:5px;cursor:pointer;transition:background-color 0.3s ease;text-decoration:none;color:#ffffff;}h1{color:#000000;font-size:30px;margin-bottom:20px;}h2{color:#333333;font-size:15px;margin-bottom:20px;}@media screen and (max-width: 767px){.button-container button{margin:5px;width:calc(100% - 10px);}}</style></head><body><div class="container"><h1>${customerNameOriginal}'s Renders</h1><h2>Each button will take you to the respective ring option</h2><div class="button-container">`;
+            // Generate HTML content for the main webpage
+            let mainHtmlContent = `<!DOCTYPE html><html><head><title>${customerNameOriginal}'s Renders</title><link rel="icon" type="image/png" href="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Hegeman_favicon.png?v=1691072796456"><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"><style>body{font-family:'Libre Baskerville',serif;display:flex;justify-content:center;margin:0;padding-top:50px;background-color:#f5f5f5;text-align:center;}.container{max-width:500px;margin:0 auto;background-color:#ffffff;padding:30px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);}.button-container{display:flex;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}.button-container button{margin:5px;padding:10px 20px;background-color:#333333;color:#ffffff;border:none;border-radius:5px;font-size:16px;cursor:pointer;transition:background-color 0.3s ease;}.button-container button:hover{background-color:#555555;}a.generated-link{display:inline-block;padding:8px 16px;background-color:#333333;border:1px solid #333333;border-radius:5px;margin:5px;cursor:pointer;transition:background-color 0.3s ease;text-decoration:none;color:#ffffff;}h1{color:#000000;font-size:30px;margin-bottom:20px;}h2{color:#333333;font-size:15px;margin-bottom:20px;}@media screen and (max-width: 767px){.button-container button{margin:5px;width:calc(100% - 10px);}}</style></head><body><div class="container"><h1>${customerNameOriginal}'s Renders</h1><h2>Each button will take you to the respective ring option</h2><div class="button-container">`;
 
-    linkInputs.forEach(inputGroup => {
-        const linkName = inputGroup.children[0].value.trim();
-        const linkUrl = inputGroup.children[1].value.trim();
-        const linkNameLowercase = linkName.toLowerCase().replace(/\s+/g, '');
+            linkInputs.forEach(inputGroup => {
+                const linkName = inputGroup.children[0].value.trim();
+                const linkUrl = inputGroup.children[1].value.trim();
+                const linkNameLowercase = linkName.toLowerCase().replace(/\s+/g, '');
 
-        // Add button for each link to the main webpage
-        mainHtmlContent += `<button class="generated-button" onclick="window.open('https://hegemanandco.glitch.me/${linkNameLowercase}.html', '_blank')">${linkName}</button>`;
+                // Add button for each link to the main webpage
+                mainHtmlContent += `<button class="generated-button" onclick="window.open('https://hegemanandco.glitch.me/${linkNameLowercase}.html', '_blank')">${linkName}</button>`;
 
-        // Generate HTML content for each link
-        let linkHtmlContent = `<!DOCTYPE html><html><style>body {overflow: hidden; width: 100%; height: 100%; background-color: white; font-family: "Inter", sans-serif !important; margin: 0; } </style> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <link rel="icon" href="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Hegeman_favicon.png?v=1691072796456" /> <title>3D Custom Render</title> <script src="https://dist.pixotronics.com/webgi/runtime/viewer-0.8.0.js"><\/script></head> <body> <webgi-viewer id="viewer-3d" src="${linkUrl}" style=" width: 100%; height: 100vh; z-index: 1; display: block; margin: 0; padding: 0;"/> <style> margin: 0; </style> </body> </html>`;
+                // Generate HTML content for each link
+                let linkHtmlContent = `<!DOCTYPE html><html><style>body {overflow: hidden; width: 100%; height: 100%; background-color: white; font-family: "Inter", sans-serif !important; margin: 0; } </style> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <link rel="icon" href="https://cdn.glitch.global/71ce20c5-807d-4242-aa0f-5c545493a450/Hegeman_favicon.png?v=1691072796456" /> <title>3D Custom Render</title> <script src="https://dist.pixotronics.com/webgi/runtime/viewer-0.8.0.js"><\/script></head> <body> <webgi-viewer id="viewer-3d" src="${linkUrl}" style=" width: 100%; height: 100vh; z-index: 1; display: block; margin: 0; padding: 0;"/> <style> margin: 0; </style> </body> </html>`;
 
-        // Create a Blob containing the HTML content for each link
-        const linkBlob = new Blob([linkHtmlContent], { type: 'text/html' });
+                // Create a Blob containing the HTML content for each link
+                const linkBlob = new Blob([linkHtmlContent], { type: 'text/html' });
 
-        // Create a temporary URL for each link Blob
-        const linkUrlObject = URL.createObjectURL(linkBlob);
+                // Create a temporary URL for each link Blob
+                const linkUrlObject = URL.createObjectURL(linkBlob);
 
-        // Create a link element to trigger the download for each link
-        const linkDownloadLink = document.createElement('a');
-        linkDownloadLink.href = linkUrlObject;
-        linkDownloadLink.download = `${linkNameLowercase}.html`; // Set the filename
-        linkDownloadLink.click();
+                // Create a link element to trigger the download for each link
+                const linkDownloadLink = document.createElement('a');
+                linkDownloadLink.href = linkUrlObject;
+                linkDownloadLink.download = `${linkNameLowercase}.html`; // Set the filename
+                linkDownloadLink.click();
 
-        // Clean up for each link
-        URL.revokeObjectURL(linkUrlObject);
-    });
+                // Clean up for each link
+                URL.revokeObjectURL(linkUrlObject);
+            });
 
-    mainHtmlContent += `</div></div></body></html>`;
+            mainHtmlContent += `</div></div></body></html>`;
 
-    // Create a Blob containing the HTML content for the main webpage
-    const mainBlob = new Blob([mainHtmlContent], { type: 'text/html' });
+            // Create a Blob containing the HTML content for the main webpage
+            const mainBlob = new Blob([mainHtmlContent], { type: 'text/html' });
 
-    // Create a temporary URL for the main webpage Blob
-    const mainUrl = URL.createObjectURL(mainBlob);
+            // Create a temporary URL for the main webpage Blob
+            const mainUrl = URL.createObjectURL(mainBlob);
 
-    // Create a link element to trigger the download for the main webpage
-    const mainDownloadLink = document.createElement('a');
-    mainDownloadLink.href = mainUrl;
-    mainDownloadLink.download = `${customerName}.html`; // Set the filename for the main webpage
-    mainDownloadLink.click();
+            // Create a link element to trigger the download for the main webpage
+            const mainDownloadLink = document.createElement('a');
+            mainDownloadLink.href = mainUrl;
+            mainDownloadLink.download = `${customerName}.html`; // Set the filename for the main webpage
+            mainDownloadLink.click();
 
-     // Show the shareable link container
-     const shareableLinkContainer = document.getElementById('shareableLinkContainer');
-    shareableLinkContainer.style.display = 'block';
+             // Show the email button
+            const sendEmailBtn = document.getElementById("sendEmailBtn");
+            sendEmailBtn.style.display = "block";
+        }
 
-    // Update the shareable link text
-    const shareableLinkText = document.getElementById('shareableLinkText');
-    shareableLinkText.value = `https://hegemanandco.glitch.me/${customerName}.html`;
+        function copyToClipboard() {
+            const shareableLinkText = document.getElementById('shareableLinkText');
+            shareableLinkText.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+        }
 
-    // Clean up
-    URL.revokeObjectURL(url);
-}
-
-function copyToClipboard() {
-    const shareableLinkText = document.getElementById('shareableLinkText');
-    shareableLinkText.select();
-    document.execCommand('copy');
-    alert('Link copied to clipboard!');
-}
-function sendEmail() {
-    const emailContent = "Hi";
-    const emailSubject = "Greetings";
+       function sendEmail() {
+    const customerName = document.getElementById('customerName').value.trim();
+    const emailContent = `Through the link provided below, you can access your custom render of your piece.\n\nYour access Password is: ${customerName}`;
+    const emailSubject = "Access to Your Custom Render";
 
     // Create mailto link
-    const mailtoLink = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailContent)}`;
+    const mailtoLink = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailContent)}%0D%0A%0D%0A${encodeURIComponent('Click here to access your custom render:')}%0D%0A${encodeURIComponent('https://www.hegemanandco.com/RenderPortal')}`;
 
     // Open default email client
     window.location.href = mailtoLink;
 }
-      
+
     </script>
 </body>
 </html>
+
