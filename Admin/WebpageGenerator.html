@@ -78,11 +78,9 @@
             </div>
             <div id="generatedLinks"></div>
             <!-- New elements for shareable link -->
-            <div id="shareableLinkContainer" style="display: none;">
-                <p>Here is the shareable link:</p>
-                <input type="text" id="shareableLinkText" readonly>
-                <button type="button" onclick="copyToClipboard()">Copy Link</button>
-            </div>
+            <!-- Replace the shareable link section with a button -->
+<button type="button" id="sendEmailBtn" onclick="sendEmail()">Send Email</button>
+
         </form>
     </div>
 
@@ -188,6 +186,17 @@ function copyToClipboard() {
     document.execCommand('copy');
     alert('Link copied to clipboard!');
 }
+function sendEmail() {
+    const emailContent = "Hi";
+    const emailSubject = "Greetings";
+
+    // Create mailto link
+    const mailtoLink = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailContent)}`;
+
+    // Open default email client
+    window.location.href = mailtoLink;
+}
+      
     </script>
 </body>
 </html>
